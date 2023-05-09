@@ -47,3 +47,14 @@ export class LayoutService {
 
 
 }
+
+
+//other component
+// this.layoutService.subscribeToLayoutChanges().pipe(
+//   takeUntil(this.destroy)
+// ).subscribe(observerResponse => {
+//   if (this.layoutService.isBreakpointActive(CustomBreakpointNames.extraSmall)) {
+
+//   }
+// })
+
