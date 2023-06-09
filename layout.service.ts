@@ -21,6 +21,13 @@ export class LayoutService {
     '(max-width: 220px)': CustomBreakpointNames.extraSmall,
     '(min-width: 2400px)': CustomBreakpointNames.extraLarge
   }
+  
+  readonly $onResize: Observable<IWindowResize> = fromEvent(window, 'resize')
+  .pipe(
+    startWith(window), // to provide initial size event
+    debounceTime(20), // to avoid producing events too fast
+    map(() => ({width: window.innerWidth, height: window.innerHeight}))
+  );
 
   subscribeToLayoutChanges() {
     return this.breakpointObserver
@@ -57,4 +64,12 @@ export class LayoutService {
 
 //   }
 // })
+
+//     this.layoutService.$onResize.pipe(
+//       takeUntil(this.destroy)
+//     ).subscribe(r => {
+
+//     })
+
+
 
